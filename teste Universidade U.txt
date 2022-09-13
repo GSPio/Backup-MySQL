@@ -1,0 +1,96 @@
+/*  Teste Lógico_1: */
+
+CREATE TABLE ALUNO (
+    Nome varchar(50),
+    Idade int,
+    Sexo char(1),
+    Endereco text,
+    Telefone varchar(20),
+    Data_inscricao_curso date,
+    Valor_curso float,
+    Ativo_S_N char(1)
+);
+
+
+use universidade_u;
+
+insert into aluno(
+Nome, Idade, Sexo, Endereco, Telefone, Data_inscricao_curso, Valor_curso, Ativo_S_N)
+values(
+'Guilherme Soares Pio', '24', 'M', 'Rua Silvado, 13. São Paulo, SP', '95952-5166', '1997-08-02', '3000.00', 'S'
+);
+
+insert into aluno(
+Nome, Idade, Sexo, Endereco, Telefone, Data_inscricao_curso, Valor_curso, Ativo_S_N)
+values(
+'Fernando', '24', 'M', 'Rua 1. São Paulo, SP', '11111-11111', '1997-04-05', '2700.00', 'N'
+);
+
+insert into aluno(
+Nome, Idade, Sexo, Endereco, Telefone, Data_inscricao_curso, Valor_curso, Ativo_S_N)
+values(
+'Douglas', '37', 'M', 'Rua 3. São Paulo, SP', '22222-2222', '1994-09-04', '3100.00', 'S'
+);
+
+insert into aluno(
+Nome, Idade, Sexo, Endereco, Telefone, Data_inscricao_curso, Valor_curso, Ativo_S_N)
+values(
+'Giulia', '26', 'F', 'Rua 4. São Paulo, SP', '33333-3333', '1998-03-04', '1900.00', 'N'
+);
+
+insert into aluno(
+Nome, Idade, Sexo, Endereco, Telefone, Data_inscricao_curso, Valor_curso, Ativo_S_N)
+values(
+'Marcela', '32', 'F', 'Rua 5. São Paulo, SP', '44444-4444', '1997-08-02', '2500.00', 'S'
+);
+
+
+---------------------------------------------------------------------------------------
+
+
+/* Teste Lógico_2: */
+
+CREATE TABLE ALUNO (
+    Nome varchar(50),
+    Idade int,
+    Sexo char(1),
+    Endereco varchar(50),
+    Telefone varchar(20),
+    Data_inscricao_curso date,
+    Valor_curso float,
+    Ativo_S_N char(1),
+    CPF varchar(11),
+    email varchar(50)
+);
+
+------------------------------------------
+
+CREATE TABLE Telefone (
+    ID_Telefone int auto_increment PRIMARY KEY,
+    Campo varchar(20),
+    Tipo char(3)
+);
+
+------------------------------------------
+
+ALTER TABLE Telefone ADD CONSTRAINT fk_aluno_telefone
+    FOREIGN KEY (FK_IDaluno)
+    REFERENCES ALUNO (ID_Aluno);
+-------------------------------------------
+ALTER TABLE Endereço ADD CONSTRAINT FK_aluno_endereço
+    FOREIGN KEY (FK_IDaluno)
+    REFERENCES ALUNO (ID_Aluno);
+------------------------------------------
+CREATE TABLE Curso (
+    ID_Curso int auto_increment PRIMARY KEY,
+    Descrição varchar(50)
+);
+----------------------------------------
+ALTER TABLE Aluno_Curso ADD CONSTRAINT FK_Aluno_Curso
+FOREIGN KEY (FK_IDAluno)
+REFERENCES ALUNO (ID_Aluno)
+
+ALTER TABLE Aluno_Curso ADD CONSTRAINT FK_Curso_Aluno
+FOREIGN KEY (FK_IDCurso)
+REFERENCES Curso (ID_Curso);
+-------------------------------------------
